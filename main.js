@@ -1,7 +1,7 @@
-var yyy = document.getElementById('xxx');
+var yyy = document.getElementById('canvas');
 var context = yyy.getContext('2d');
 
-autoSetCanvasSize(yyy)
+// autoSetCanvasSize(yyy)
 
 listenToMouse(yyy)
 var eraserEnabled = false
