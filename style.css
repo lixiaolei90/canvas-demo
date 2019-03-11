@@ -1,6 +1,6 @@
 #canvas{
     background: green;
-    /* display: block; */
+    display: block;
   }
   
   body{
@@ -14,7 +14,7 @@
   }
 
   
-  /* .actions{
+  .actions{
     position: fixed;
     bottom: 0;
     left: 0;
@@ -28,5 +28,5 @@
   }
   .actions.x > #eraser{
     display: none
-  } */
+  }
   
