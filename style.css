@@ -1,5 +1,4 @@
 #canvas{
-    background: green;
     display: block;
   }
   
@@ -13,20 +12,22 @@
       padding: 0px;
   }
 
-  
+  .icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
   .actions{
     position: fixed;
-    bottom: 0;
-    left: 0;
-  }
-  .actions > #brush{
-    display: none;
-  }
-  
-  .actions.x > #brush{
+    top: 0px ;
+    left: 0px;
+    border:1px solid red;
     display: inline-block;
   }
-  .actions.x > #eraser{
-    display: none
+  .actions > svg {
+    width: 1.5em;
+    height: 1.5em;
   }
+  
   
