@@ -1,5 +1,6 @@
 var yyy = document.getElementById('canvas');
 var context = yyy.getContext('2d');
+var lineWidth = 5
 
 autoSetCanvasSize(yyy)
 
@@ -35,12 +36,12 @@ blue.onclick = function() {
   yellow.classList.remove('active');
 }
 thin.onclick = function() {
-  context.lineWidth = 5
+  lineWidth = 5;
   thin.classList.add('active')
   thick.classList.remove('active')
 }
 thick.onclick = function() {
-  context.lineWidth = 10
+  lineWidth = 10;
   thick.classList.add('active')
   thin.classList.remove('active')
 }
@@ -72,12 +73,12 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x1, y1, x2, y2) {
   context.beginPath();
-  // context.strokeStyle = 'black'
   context.moveTo(x1, y1) // 起点
-  // context.lineWidth = 5
+  context.lineWidth = lineWidth
   context.lineTo(x2, y2) // 终点
   context.stroke()
   context.closePath()
+  console.log(context)
 }
 
 function listenToUser(canvas) {
