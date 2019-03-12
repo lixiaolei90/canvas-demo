@@ -56,3 +56,26 @@ ul,ol {
   .colors li.blue {
     background: blue;
   }
+  .ftWeight {
+    position: fixed;
+    left: 25px;
+    top: 180px;
+  }
+  .ftWeight > li {
+    background: black;
+    margin: 15px 0;
+  }
+  .ftWeight >li.thin {
+    height: 5px;
+    width: 30px;
+  }
+  .ftWeight >li.thick {
+    height: 8px;
+    width: 30px;
+  }
+  .ftWeight > li.active {
+    transform: scale(1.05);
+    transition: 0.2s;
+    box-shadow: 0 0 1.5px rgba(0,0,0,0.8);
+  }
+  

@@ -18,14 +18,32 @@ pen.onclick = function(){
 }
 red.onclick = function() {
   context.strokeStyle = "red";
+  red.classList.add('active');
+  yellow.classList.remove('active');
+  blue.classList.remove('active');
 }
 yellow.onclick = function() {
   context.strokeStyle = "yellow";
+  yellow.classList.add('active');
+  red.classList.remove('active');
+  blue.classList.remove('active');
 }
 blue.onclick = function() {
   context.strokeStyle = "blue";
+  blue.classList.add('active');
+  red.classList.remove('active');
+  yellow.classList.remove('active');
 }
-
+thin.onclick = function() {
+  context.lineWidth = 5
+  thin.classList.add('active')
+  thick.classList.remove('active')
+}
+thick.onclick = function() {
+  context.lineWidth = 10
+  thick.classList.add('active')
+  thin.classList.remove('active')
+}
 
 /******/
 
@@ -56,7 +74,7 @@ function drawLine(x1, y1, x2, y2) {
   context.beginPath();
   // context.strokeStyle = 'black'
   context.moveTo(x1, y1) // 起点
-  context.lineWidth = 5
+  // context.lineWidth = 5
   context.lineTo(x2, y2) // 终点
   context.stroke()
   context.closePath()
