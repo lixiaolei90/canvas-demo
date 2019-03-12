@@ -1,17 +1,14 @@
 #canvas{
     display: block;
   }
-  
-  body{
-    margin: 0px;
-    padding: 0px;
-  }
-  
-  html{
+ 
+*{
       margin: 0px;
       padding: 0px;
   }
-
+ul,ol {
+  list-style:none;
+}
   .icon {
     width: 1em; height: 1em;
     vertical-align: -0.15em;
@@ -22,12 +19,40 @@
     position: fixed;
     top: 0px ;
     left: 0px;
-    border:1px solid red;
     display: inline-block;
   }
   .actions > svg {
     width: 1.5em;
     height: 1.5em;
+    padding: 20px;
+    margin: 0 10px;
+
   }
-  
-  
+  .actions > svg.active {
+    fill:rgb(177, 171, 171);
+    transform: scale(1.2);
+    transition: 0.2s;
+  }
+  .colors {
+    position: fixed;
+    top: 80px;
+    left: 25px;
+  }
+  .colors li {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+  .colors li.active{
+    box-shadow: 0 0 3px rgba(0,0,0,0.95);
+  }
+  .colors li.red {
+    background: red;
+  }
+  .colors li.yellow {
+    background: yellow;
+  }
+  .colors li.blue {
+    background: blue;
+  }
