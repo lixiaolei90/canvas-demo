@@ -1,47 +1,93 @@
-var yyy = document.getElementById('canvas');
-var context = yyy.getContext('2d');
-var lineWidth = 5
+let canvas = document.getElementById('canvas')
 
-autoSetCanvasSize(yyy)
 
-listenToUser(yyy)
+let context = canvas.getContext('2d')
 
-var eraserEnabled = false
-eraser.onclick = function() {
+
+let lineWidth = 5
+
+
+
+autoSetCanvasSize(canvas)
+
+listenToUser(canvas)
+
+let eraserEnabled = false
+ eraser.onclick = function() {
   eraserEnabled =true
-  eraser.classList.add('active') 
+  eraser.classList.add('active')
   pen.classList.remove('active')
 }
 pen.onclick = function(){
   eraserEnabled = false
-  pen.classList.add('active') 
+  pen.classList.add('active')
   eraser.classList.remove('active')
 }
+deleteicon.onclick = function() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+}
+downloadimg.onclick = function() {
+  let url = canvas.toDataURL("image/png")
+  let image = document.createElement('a')
+  document.body.appendChild(image)
+  image.href = url
+  image.download = "我的画"
+  image.click()
+}
+
 red.onclick = function() {
-  context.strokeStyle = "red";
-  red.classList.add('active');
-  yellow.classList.remove('active');
-  blue.classList.remove('active');
+  context.strokeStyle = "red"
+
+
+  red.classList.add('active')
+
+
+  yellow.classList.remove('active')
+
+
+  blue.classList.remove('active')
+
+
 }
 yellow.onclick = function() {
-  context.strokeStyle = "yellow";
-  yellow.classList.add('active');
-  red.classList.remove('active');
-  blue.classList.remove('active');
+  context.strokeStyle = "yellow"
+
+
+  yellow.classList.add('active')
+
+
+  red.classList.remove('active')
+
+
+  blue.classList.remove('active')
+
+
 }
 blue.onclick = function() {
-  context.strokeStyle = "blue";
-  blue.classList.add('active');
-  red.classList.remove('active');
-  yellow.classList.remove('active');
+  context.strokeStyle = "blue"
+
+
+  blue.classList.add('active')
+
+
+  red.classList.remove('active')
+
+
+  yellow.classList.remove('active')
+
+
 }
 thin.onclick = function() {
-  lineWidth = 5;
+  lineWidth = 5
+
+
   thin.classList.add('active')
   thick.classList.remove('active')
 }
 thick.onclick = function() {
-  lineWidth = 10;
+  lineWidth = 10
+
+
   thick.classList.add('active')
   thin.classList.remove('active')
 }
@@ -56,23 +102,27 @@ function autoSetCanvasSize(canvas) {
   }
 
   function setCanvasSize() {
-    var pageWidth = document.documentElement.clientWidth
-    var pageHeight = document.documentElement.clientHeight
+    let pageWidth = document.documentElement.clientWidth
+    let pageHeight = document.documentElement.clientHeight
 
     canvas.width = pageWidth
     canvas.height = pageHeight
   }
 }
 
-function drawCircle(x, y, radius) {
-  context.beginPath()
-  context.fillStyle = 'black'
-  context.arc(x, y, radius, 0, Math.PI * 2);
-  context.fill()
-}
+// function drawCircle(x, y, radius) {
+//   context.beginPath()
+//   context.fillStyle = 'black'
+//   context.arc(x, y, radius, 0, Math.PI * 2)
+
+
+//   context.fill()
+// }
 
 function drawLine(x1, y1, x2, y2) {
-  context.beginPath();
+  context.beginPath()
+
+
   context.moveTo(x1, y1) // 起点
   context.lineWidth = lineWidth
   context.lineTo(x2, y2) // 终点
@@ -84,15 +134,17 @@ function drawLine(x1, y1, x2, y2) {
 function listenToUser(canvas) {
 
 
-  var using = false
-  var lastPoint = {
+  let using = false
+  let lastPoint = {
     x: undefined,
     y: undefined
   }
+  //特性检测
   if(document.body.ontouchstart !== undefined) {
-    canvas.ontouchstart = function(event) {
-      var x = event.touches[0].clientX
-      var y = event.touches[0].clientY
+    //触屏设备
+    canvas.ontouchstart = function(event)  {
+      let x = event.touches[0].clientX
+      let y = event.touches[0].clientY
       using = true
       if (eraserEnabled) {
         context.clearRect(x - 5, y - 5, 10, 10)
@@ -103,15 +155,15 @@ function listenToUser(canvas) {
         }
       }
     }
-    canvas.ontouchmove = function() {
-      var x = event.touches[0].clientX
-      var y = event.touches[0].clientY
-      if (!using) {return}
-  
+    canvas.ontouchmove = function(event) {
+      let x = event.touches[0].clientX
+      let y = event.touches[0].clientY
+      if (!using) { return }
+
       if (eraserEnabled) {
         context.clearRect(x - 5, y - 5, 10, 10)
       } else {
-        var newPoint = {
+        let newPoint = {
           "x": x,
           "y": y
         }
@@ -123,9 +175,10 @@ function listenToUser(canvas) {
       using = false
     }
   } else {
-    canvas.onmousedown = function(aaa) {
-      var x = aaa.clientX
-      var y = aaa.clientY
+    //非触屏设备
+    canvas.onmousedown = function(event) {
+      let x = event.clientX
+      let y = event.clientY
       using = true
       if (eraserEnabled) {
         context.clearRect(x - 5, y - 5, 10, 10)
@@ -136,25 +189,25 @@ function listenToUser(canvas) {
         }
       }
     }
-    canvas.onmousemove = function(aaa) {
-      var x = aaa.clientX
-      var y = aaa.clientY
-  
+    canvas.onmousemove = function(event) {
+      let x = event.clientX
+      let y = event.clientY
+
       if (!using) {return}
   
       if (eraserEnabled) {
         context.clearRect(x - 5, y - 5, 10, 10)
       } else {
-        var newPoint = {
+        let newPoint = {
           "x": x,
           "y": y
         }
         drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
         lastPoint = newPoint
       }
-  
+
     }
-    canvas.onmouseup = function(aaa) {
+    canvas.onmouseup = function(event) {
       using = false
     }
   }
